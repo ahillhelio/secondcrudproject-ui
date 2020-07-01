@@ -15,11 +15,7 @@ class MovieForm extends React.Component{
 
     handleSubmit = (event) => {
         event.preventDefault();
-
-        
         const watched= this.state.watched === true;
-        
-
         fetch(`${process.env.REACT_APP_API_URL}/api/nokomovies`, {
             method: "POST",
             headers:{
@@ -27,13 +23,14 @@ class MovieForm extends React.Component{
             },
             body: JSON.stringify([{title : this.state.title, koreantitle : this.state.koreantitle, year : parseInt(this.state.year), watched : watched}])
         })
-        .then(this.props.refresh)
+        // .then(this.props.refresh)
+        .then(result=> console.log("post result", result)) //how can we modify this to update state object?
         .then(() => this.setState({
             title: "",
             koreantitle: "",
             year: 0, 
             watched: true
-        }));
+        })); //THEN
     }
 
     render() {
