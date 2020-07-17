@@ -11,6 +11,9 @@ class Movie extends Component {
               
             ],
             isCreate : true,
+            updateFilm : {
+                watched : false
+            },
         }
     }
 
@@ -32,9 +35,22 @@ class Movie extends Component {
     updateFilm = (film) => {
         this.setState({
             updateFilm: film,
-            isCreate: false,
+            isCreate: false
         })
     };
+
+    patchFilm = (film) => {
+        console.log("Began patchFilm process", film)
+        this.setState({
+            patchFilm: {watched : film.watched},
+            isCreate: false
+            // (...this.patchFilm)
+        },
+        () => console.log("Made it this far", this.state.patchFilm)
+            
+        )
+    };
+
 
     renderForm = () => {
         let result;
@@ -63,6 +79,7 @@ class Movie extends Component {
                         <DeleteFilm film={film} 
                         deleteFilm={this.deleteFilm}
                         updateFilm={this.updateFilm}
+                        patchFilm={this.patchFilm}
                         />
                         
                 </div>    
