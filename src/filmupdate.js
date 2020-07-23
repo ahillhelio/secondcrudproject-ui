@@ -32,9 +32,29 @@ class FilmUpdate extends React.Component {
         }));
     }
 
+    // handlePatch = (event) => {
+    //     event.preventDefault();
+    //     const watched= this.state.watched === "true"; // change to false?
+    //     fetch(`${process.env.REACT_APP_API_URL}/api/nokomovies/${this.props.film._id}`, {
+    //         method: 'PATCH',
+    //         headers:{
+    //             'content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify({watched : watched})
+    //     })
+    //     .then(this.props.refresh)
+    //     .then(() => this.setState({
+    //         // title: "",
+    //         // koreantitle: "",
+    //         // year: 0,
+    //         watched: ""
+    //     }));
+    // }
+// like above, but with PUT becoming PATCH and only the "watched" prop changed in body on line 24
     render() {
         return(
             <form onSubmit={this.handleSubmit}> 
+            
                 <input 
                     name="title" 
                     type="text"
